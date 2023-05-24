@@ -36,7 +36,7 @@ void CTexture::Destory() {
 }
 
 #include <string>
-void CTexture::Load(const char* filename)
+bool CTexture::Load(const char* filename)
 {
 	//ファイルオープン
 	std::string file(filename);
@@ -52,7 +52,7 @@ void CTexture::Load(const char* filename)
 	if (!data)
 	{
 		printf("CTexture::Load Error:%s\n", file.data());
-		return;
+		return false;
 	}
 	//テクスチャの作成
 	mId = SOIL_create_OGL_texture(data,
@@ -69,7 +69,7 @@ void CTexture::Load(const char* filename)
 	//データの解放
 	SOIL_free_image_data(data);
 	mHeader.depth *= 8;
-	return;
+	return true;
 }
 
 //	//if (mTexFile.count(filename)) {

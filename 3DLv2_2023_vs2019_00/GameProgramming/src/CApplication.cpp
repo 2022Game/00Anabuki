@@ -11,6 +11,8 @@
 #include "CBillBoard.h"
 #include "CEnemy3.h"
 
+#include "GamePause.h"
+
 //クラスのstatic変数
 CTexture CApplication::mTexture;
 CCharacterManager CApplication::mCharacterManager;
@@ -68,6 +70,9 @@ CTexture* CApplication::Texture()
 
 void CApplication::Start()
 {
+	//ゲームポーズを制御するクラスを生成
+	new GamePause();
+
 	spUi = new CUi();	//UIクラスの生成
 	//モデルファイルの入力
 	mModel.Load(MODEL_OBJ);
@@ -109,7 +114,6 @@ void CApplication::Start()
 
 	new CEnemy3(CVector(-5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
 	new CEnemy3(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(0.1f, 0.1f, 0.1f));
-
 }
 
 void CApplication::Update()

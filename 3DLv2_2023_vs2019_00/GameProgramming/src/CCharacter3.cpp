@@ -5,6 +5,8 @@ CCharacter3::CCharacter3()
 	:mpModel(nullptr)
 	, mTag(EZERO)
 {
+	SetPauseType(TaskPauseType::eGame);
+
 	//タスクリストに追加
 //	CApplication::TaskManager()->Add(this);
 	CTaskManager::Instance()->Add(this);
@@ -14,6 +16,8 @@ CCharacter3::CCharacter3(int priority)
 	:mpModel(nullptr)
 	, mTag(EZERO)
 {
+	SetPauseType(TaskPauseType::eGame);
+
 	mPriority = priority;
 	CTaskManager::Instance()->Add(this);
 }
